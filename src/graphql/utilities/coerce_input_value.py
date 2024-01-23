@@ -96,6 +96,8 @@ def coerce_input_value(
             field_value = input_value.get(field_name, Undefined)
 
             if field_value is Undefined:
+                coerced_dict[field.out_name or field_name] = Undefined
+
                 if field.default_value is not Undefined:
                     # Use out name as name if it exists (extension of GraphQL.js).
                     coerced_dict[field.out_name or field_name] = field.default_value
